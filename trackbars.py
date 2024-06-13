@@ -1,6 +1,11 @@
 import cv2
 import numpy as np
 
+# NOTE: The code is just a rough and basic implementation
+# It can still be better improved or implemented
+# For practice you can try to fix the problem with the use of callbacks for this feature implementation
+# CLUE: Can you access the other trackbar's position in another's callback
+
 # Use a trackbar to adjust brightness of an image
 # Use another to switch between colored and grayscale
 original = cv2.imread("graf1.png", cv2.IMREAD_UNCHANGED)
