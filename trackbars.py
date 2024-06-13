@@ -8,22 +8,24 @@ img = original.copy()
 offset = -100
 
 def adjustBrightness(x):
-  scale = np.zeros([original.shape[0], original.shape[1], 3], np.uint8) + abs(x+offset)
-  tmp = original[:]
-  # print(scale)
-  if offset+x < 0:
-    cv2.subtract(tmp, scale, img)
-  else:
-    cv2.add(tmp, scale, img)
-  # print(original)
+  pass
+  # scale = np.zeros([original.shape[0], original.shape[1], 3], np.uint8) + abs(x+offset)
+  # tmp = original[:]
+  # # print(scale)
+  # if offset+x < 0:
+  #   cv2.subtract(tmp, scale, img)
+  # else:
+  #   cv2.add(tmp, scale, img)
+  # cv2.imshow("image", img)
 
 
 def adjustColor(x):
-  global img
-  if x == 1:
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-  else:
-    img = original.copy()
+  pass
+  # global img
+  # if x == 1:
+  #   img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+  # else:
+  #   img = original.copy()
 
 
 cv2.namedWindow("image")
@@ -36,5 +38,26 @@ while True:
   k = cv2.waitKey(1)
   if k == 27 & 0xFF:
     break
+
+  shade = cv2.getTrackbarPos("ColorScheme", "image")
+  x = cv2.getTrackbarPos("Brightness", "image")
+  scale = np.zeros([original.shape[0], original.shape[1], 3], np.uint8) + abs(x+offset)
+  tmp = original[:]
+
+  # print(scale)
+  # print(offset+x)
+  if offset+x < 0:
+    cv2.subtract(tmp, scale, img)
+  else:
+    cv2.add(tmp, scale, img)
+
+  if shade == 1:
+    tmp = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    img = cv2.cvtColor(tmp, cv2.COLOR_GRAY2BGR)
+  else:
+    if offset+x < 0:
+      cv2.subtract(tmp, scale, img)
+    else:
+      cv2.add(tmp, scale, img)
 
 cv2.destroyAllWindows()
