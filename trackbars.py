@@ -5,6 +5,7 @@ import numpy as np
 # It can still be better improved or implemented
 # For practice you can try to fix the problem with the use of callbacks for this feature implementation
 # CLUE: Can you access the other trackbar's position in another's callback
+# Or Create an update display function that runs after each callback
 
 # Use a trackbar to adjust brightness of an image
 # Use another to switch between colored and grayscale
